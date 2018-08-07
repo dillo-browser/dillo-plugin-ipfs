@@ -143,6 +143,10 @@ func IpfsUrlToGatewayUrl(u *url.URL) string {
 
 func serveIpfs(conn net.Conn, url_str string, u *url.URL) error {
     gwUrl := IpfsUrlToGatewayUrl(u)
+    err := writeStatus(conn, "Fetching IPFS content...")
+    if err != nil {
+        return err
+    }
     resp, err := http.Get(gwUrl)
     if err != nil {
         err := writeHeader(conn, url_str, "text/html")
@@ -154,10 +158,6 @@ func serveIpfs(conn net.Conn, url_str string, u *url.URL) error {
         return io.EOF
     }
     defer resp.Body.Close()
-    err = writeStatus(conn, "Fetching IPFS content...")
-    if err != nil {
-        return err
-    }
     contentType := resp.Header.Get("Content-Type")
     if (contentType == "") {
         contentType = "text/plain"

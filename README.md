@@ -24,6 +24,8 @@ Examples:
 - <ipfs://QmYNQJoKGNHTpPxCBPh9KkDpaExgd2duMa3aF6ytMpHdao/>
 - <ipns://dist.ipfs.io/>
 
+You will need a local `ipfs daemon` running on port 8080.
+
 [IPFS]: https://ipfs.io/
 [Dillo]: https://dillo.org/
 

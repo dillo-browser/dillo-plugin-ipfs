@@ -63,6 +63,7 @@ func handleTag(conn net.Conn, reader *bufio.Reader) error {
     switch cmd {
     case "auth": return handleAuth(conn, tag.Props["msg"])
     case "open_url": return handleOpenUrl(conn, tag.Props["url"])
+    case "DpiBye": return handleDpiBye(conn)
     default: return fmt.Errorf("unhandled cmd \"%s\"\n", cmd)
     }
 }
@@ -100,6 +101,12 @@ func handleOpenUrl(conn net.Conn, url_str string) error {
     case "ipfs", "ipns": return serveIpfs(conn, url_str, u)
     default: return serve404(conn, url_str)
     }
+}
+
+func handleDpiBye(conn net.Conn) error {
+    fmt.Fprintf(os.Stderr, "[ipfs dpi]: Stopping\n")
+    os.Exit(0)
+    return nil
 }
 
 func escapeDpiValue(str string) string {
@@ -261,7 +268,3 @@ func readProperty(reader *bufio.Reader) (string, string, error) {
 
     return string(key_bytes), string(value_bytes), nil
 }
-
-// <cmd='auth' msg='a20a4710' '>
-// <cmd='open_url' url='ipfs://asdasdas/''asdasd/asdad>aasd' '>
-

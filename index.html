@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+<title>dillo-ipfs: IFPS in Dillo</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+</head>
+
+<body>
+
+<h1><a href="ipns://12D3KooWBG1fsFRF4ykpidXVNVnbon5KLfv67pkkGeFstrwftVVb/">dillo-ipfs</a></h1>
+<p><strong><a href="https://ipfs.io/">IPFS</a> in <a href="https://dillo.org/">Dillo</a></strong></p>
+<p><img src="ipfs-logo-128-ice-dillo.png" alt="IPFS logo with Dillo"></p>
+
+<h2>Screenshots</h2>
+<p><img src="dillo-ipfs-screenshot.png" alt="IPFS in Dillo" border=1/></p>
+<p><img src="dillo-ipns-screenshot.png" alt="IPNS in Dillo" border=1/></p>
+
+<h2>Code</h2>
+<ul>
+<li><a href="ipfs.dpi.go"><code>./ipfs.dpi.go</code></a></li>
+</ul>
+
+<h2>Download</h2>
+<p><em>via local IPFS gateway</em>:<br>
+<code>git clone http://localhost:8080/ipns/12D3KooWBG1fsFRF4ykpidXVNVnbon5KLfv67pkkGeFstrwftVVb/.git dillo-ipfs</code></p>
+<p><em>via global IPFS gateway</em>:<br>
+<code>git clone https://ipfs.io/ipns/12D3KooWBG1fsFRF4ykpidXVNVnbon5KLfv67pkkGeFstrwftVVb/.git dillo-ipfs</code></p>
+<p><em>via <a href="https://git.scuttlebot.io/%25n92DiQh7ietE%2BR%2BX%2FI403LQoyf2DtR3WQfCkDKlheQU%3D.sha256">git-ssb</a></em>:<br>
+<code>git clone ssb://%C35b+MlZ/y5TT1e7SG66eNKEIdX5DRl9PRUxbhvO89k=.sha256 dillo-ipfs</code>
+<p><em>via global <a href="https://git.scuttlebot.io/%25q5d5Du%2B9WkaSdjc8aJPZm%2BjMrqgo0tmfR%2BRcX5ZZ6H4%3D.sha256">git-ssb-web</a> gateway</em>:<br>
+<code>git clone https://git.scuttlebot.io/%25C35b%2BMlZ%2Fy5TT1e7SG66eNKEIdX5DRl9PRUxbhvO89k%3D.sha256 dillo-ipfs</code>
+
+<h2>Install</h2>
+<pre>
+cd dillo-ipfs
+go build ./ipfs.dpi.go
+mkdir -p ~/.dillo/dpi/ipfs
+ln -rs ipfs.dpi ~/.dillo/dpi/ipfs
+test -f ~/.dillo/dpidrc || cp /etc/dillo/dpidrc ~/.dillo/dpidrc
+echo 'proto.ipfs=ipfs/ipfs.dpi' >> ~/.dillo/dpidrc
+echo 'proto.ipns=ipfs/ipfs.dpi' >> ~/.dillo/dpidrc
+dpidc stop
+</pre>
+
+<p>Then you can navigate to <code>ipfs://</code> and <code>ipns://</code> URLs in Dillo like any other URLs. Examples:</p>
+<ul>
+<li><a href="ipfs://QmfYeDhGH9bZzihBUDEQbCbTc5k5FZKURMUoUvfmc27BwL/architecture/index.html">ipfs://QmfYeDhGH9bZzihBUDEQbCbTc5k5FZKURMUoUvfmc27BwL/architecture/index.html</a></li>
+<li><a href="ipfs://QmYNQJoKGNHTpPxCBPh9KkDpaExgd2duMa3aF6ytMpHdao/">ipfs://QmYNQJoKGNHTpPxCBPh9KkDpaExgd2duMa3aF6ytMpHdao/</a></li>
+<li><a href="ipns://dist.ipfs.io/">ipns://dist.ipfs.io/</a></li>
+</ul>
+
+<p>You will need a local <code>ipfs daemon</code> HTTP gateway running on port 8080.</p>
+
+<h2>Development</h2>
+<p>Collaborate on the <a href="https://www.scuttlebutt.nz/">Secure Scuttlebutt</a> (SSB) network:<br/>
+git repo: <a href="https://git.scuttlebot.io/%25C35b%2BMlZ%2Fy5TT1e7SG66eNKEIdX5DRl9PRUxbhvO89k%3D.sha256"><code>%C35b+MlZ/y5TT1e7SG66eNKEIdX5DRl9PRUxbhvO89k=.sha256</code></a><br/>
+Discussion thread: <a href="https://viewer.scuttlebot.io/%25BnJmdowajrPdezpVenAO%2BtOlVfZbntaEI9CZ9JhIbHs%3D.sha256"><code>%BnJmdowajrPdezpVenAO+tOlVfZbntaEI9CZ9JhIbHs=.sha256</code></a><br/>
+Author: <code>@f/6sQ6d2CMxRUhLpspgGIulDxDCwYD7DzFzPNr7u5AU=.ed25519</code><br/>
+Need an invite to SSB? Ask <code>cel</code> on Freenode IRC.</p>
+
+<h2>License</h2>
+<p><a href="LICENSE">AGPLv3+</a></p>
+
+</body>
+</html>

@@ -2,6 +2,8 @@
 
 Connect to [IPFS][] sites in [Dillo][].
 
+![Dillo loading ipfs://QmYNQJoKGNHTpPxCBPh9KkDpaExgd2duMa3aF6ytMpHdao/](screenshot.png)
+
 Created by [Charles E. Lehner](https://celehner.com/) along with other
 [Dillo plugins](https://celehner.com/projects.html#dillo-plugins).
 
